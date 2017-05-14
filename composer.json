@@ -1,0 +1,28 @@
+{
+  "name": "shalvah/syringe",
+  "type": "library",
+  "description": "Small dependency injection container for PHP",
+  "keywords": ["dependency injection","ioc","container","php"],
+  "homepage": "http://shalvah.me/syringe",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Shalvah Adebayo",
+      "email": "shalvah@shalvah.me",
+      "homepage": "http://shalvah.me"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "pimple/pimple": "^3.0",
+    "container-interop/container-interop": "^1.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Syringe\\": "/"
+    }
+  }
+}
