@@ -1,3 +1,4 @@
 # Syringe
-Simple PHP dependency injection container, PSR-11 compliant
+SSimple PSR-11 compliant PHP dependency injection container
 
+[Full documentation](http://shalvah.me/syringe)
