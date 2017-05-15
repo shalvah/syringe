@@ -15,7 +15,58 @@ class ContainerTest extends PHPUnit_Framework_TestCase
         $this->c = new Container();
     }
 
-    public function testCanBindAndRetrieveString()
+    //test the specific binding methods
+    public function testBindValueCanBindString()
+    {
+        $this->c->bindValue("string_item", "string_value");
+        $this->assertEquals("string_value", $this->c->get("string_item"));
+    }
+
+    public function testBindClassCanBindClassname()
+    {
+        $this->c->bindClass("class_item", stdClass::class);
+        $this->assertInstanceOf(stdClass::class, $this->c->get("class_item"));
+    }
+
+    public function testBindClassCanBindCallable()
+    {
+        $this->c->bindClass("class_item", function ($c) {
+            return new stdClass();
+        });
+        $this->assertInstanceOf(stdClass::class, $this->c->get("class_item"));
+    }
+
+    public function testBindInstanceCanBindObject()
+    {
+        $obj = new DateTime();
+        $this->c->bindInstance("object_item", $obj);
+        $this->assertInstanceOf(DateTime::class, $this->c->get("object_item"));
+    }
+
+    public function testBindInstanceReturnsSameInstanceFromObject()
+    {
+        $obj = new DateTime();
+        $this->c->bindInstance("object_item", $obj);
+        $this->assertEquals($obj, $this->c->get("object_item"));
+    }
+
+    public function testBindInstanceCanBindCallable()
+    {
+        $this->c->bindClass("object_item", function ($c) {
+            return new DateTime();
+        });
+        $this->assertInstanceOf(DateTime::class, $this->c->get("object_item"));
+    }
+
+    public function testBindInstanceShouldReturnSameInstanceFromCallable()
+    {
+        $this->c->bindClass("object_item", function ($c) {
+            return new DateTime();
+        });
+        $this->assertEquals($this->c->get("object_item"), $this->c->get("object_item"));
+    }
+
+    public function testBindCanBindAndRetrieveString()
     {
         $this->c->bind("item1", "value");
         $this->assertEquals("value", $this->c->get("item1"));

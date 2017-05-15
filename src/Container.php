@@ -98,6 +98,7 @@ class Container implements ContainerInterface
         } else if (isset(self::$instances[$key])) {
             if(is_callable($result = self::$instances[$key])) {
                 $result = call_user_func_array($result, [$this]);
+                self::$instances[$key] = $result;
             }
         } else if (isset(self::$classes[$key])) {
             if (is_callable($result = self::$classes[$key])) {
