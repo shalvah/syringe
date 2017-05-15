@@ -66,7 +66,7 @@ class ContainerTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($this->c->get("object_item"), $this->c->get("object_item"));
     }
 
-    public function testBindCanBindAndRetrieveString()
+    public function testBindCanBindString()
     {
         $this->c->bind("item1", "value");
         $this->assertEquals("value", $this->c->get("item1"));
@@ -79,14 +79,14 @@ class ContainerTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(["value"], $c->get("item2"));
     }
 
-    public function testCanBindAndRetrieveObjectInstance()
+    public function testBindCanBindInstanceFromObject()
     {
         $obj = new StdClass();
         $this->c->bind("item3", $obj);
         $this->assertEquals($obj, $this->c->get("item3"));
     }
 
-    public function testCanBindAndRetrieveObjectInstanceViaClosure()
+    public function testCanBindInstanceFromClosure()
     {
         $obj = new stdClass();
         $this->c->bindInstance("item4", function ($c) use ($obj) {
@@ -103,7 +103,7 @@ class ContainerTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(DateTime::class, $this->c->get("item5"));
     }
 
-    public function testBindCanBindAndRetrieveClassViaClassname()
+    public function testBindCanBindClassFromClassname()
     {
         $this->c->bind("item6", DateTime::class);
         $this->assertInstanceOf(DateTime::class, $this->c->get("item6"));
