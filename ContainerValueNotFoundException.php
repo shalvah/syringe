@@ -1,18 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: J
- * Date: 15/05/2017
- * Time: 00:02
- */
 
 namespace Syringe;
 
 
 use Exception;
-use Psr\Container\NotFoundExceptionInterface;
+use Interop\Container\Exception\NotFoundException;
 
-class ContainerValueNotFoundException extends Exception implements NotFoundExceptionInterface
+class ContainerValueNotFoundException extends Exception implements NotFoundException
 {
 
     /**

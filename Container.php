@@ -2,9 +2,11 @@
 
 namespace Syringe;
 
-use Psr\Container\ContainerInterface;
+use interop\Container\ContainerInterface;
 
 /**
+ * The dependency injction container
+ *
  * Class Container
  * @package Syringe
  */
