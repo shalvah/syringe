@@ -2,7 +2,7 @@
 
 namespace Syringe;
 
-use interop\Container\ContainerInterface;
+use Interop\Container\ContainerInterface;
 
 /**
  * The dependency injction container
@@ -43,7 +43,7 @@ class Container implements ContainerInterface
         if (is_callable($value)) {
             $this->bindClass($key, $value);
         } else if (is_object($value)) {
-            $this->bindSingleton($key, $value);
+            $this->bindInstance($key, $value);
         } else {
             $this->bindValue($key, $value);
         }
@@ -66,7 +66,7 @@ class Container implements ContainerInterface
      * @param string $key
      * @param $object
      */
-    public function bindSingleton(string $key, $object)
+    public function bindInstance(string $key, $object)
     {
         self::$instances[$key] = $object;
     }
@@ -88,8 +88,12 @@ class Container implements ContainerInterface
     public function get($key)
     {
         if (isset(self::$values[$key])) {
-            if (class_exists($result = self::$values[$key])) {
-                $result = new $result();
+            $result = self::$values[$key];
+            if(is_array($result)) {
+                return $result;
+            }
+            if (class_exists($result)) {
+                return new $result();
             }
         } else if (isset(self::$instances[$key])) {
             if(is_callable($result = self::$instances[$key])) {
@@ -102,7 +106,7 @@ class Container implements ContainerInterface
                 $result = new $result();
             }
         } else {
-            throw new ContainerValueNotFoundException("You haven't bound anything for $key.");
+            throw new ContainerValueNotFoundException("You haven't bound anything for $key");
         }
 
         //execute any extensions
@@ -111,6 +115,7 @@ class Container implements ContainerInterface
                 $result = call_user_func_array($extra, [$result, $this]);
             }
         }
+        return $result;
     }
 
     /**
@@ -137,15 +142,6 @@ class Container implements ContainerInterface
         } else {
             self::$extensions[$key] = [$func];
         }
-    }
-
-    /**
-     * @param string $key
-     * @param callable $func
-     */
-    public function once(string $key, callable $func)
-    {
-        self::$instances[$key] = $func;
     }
 
     /**
