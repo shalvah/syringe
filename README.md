@@ -17,7 +17,7 @@ composer install
 ```
 - Run tests
 ```bash
-phpunit
+vendor/bin/phpunit tests
 ```
 
 # Documentation
