@@ -1,4 +1,6 @@
 # Syringe
+[![Latest Stable Version](https://poser.pugx.org/shalvah/syringe/v/stable)](https://packagist.org/packages/shalvah/syringe) [![Total Downloads](https://poser.pugx.org/shalvah/syringe/downloads)](https://packagist.org/packages/shalvah/syringe) [![License](https://poser.pugx.org/shalvah/syringe/license)](https://packagist.org/packages/shalvah/syringe)
+
 Syringe is a small dependency injection container for PHP.
 
 Dependency injection is a programming practice in which classes which depend on other classes or values automatically Have these dependencies passed to them instead of having to create them. These useful classes and values are often known as services and parameters respectively. For more on dependency injection, see [here](https://code.tutsplus.com/tutorials/dependency-injection-in-php--net-28146).
