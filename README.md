@@ -1,6 +1,9 @@
 # Syringe
 Simple PSR-11 compliant PHP dependency injection container
 
+# Documentation
+[Full documentation](http://shalvah.github.io/syringe)
+
 # Installation
 ```bash
 composer require shalvah/syringe
@@ -20,6 +23,3 @@ composer install
 ./vendor/bin/phpunit tests 
 # on Windows: vendor\bin\phpunit tests 
 ```
-
-# Documentation
-[Full documentation](http://shalvah.me/syringe)
