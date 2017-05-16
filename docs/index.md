@@ -3,8 +3,6 @@ Syringe is a small dependency injection container for PHP.
 
 Dependency injection is a programming practice in which classes which depend on other classes or values automatically Have these dependencies passed to them instead of having to create them. These useful classes and values are often known as services and parameters respectively. For more on dependency injection, see here.
 
-# Contents
-
 ## Getting a container instance
 To bind to the container, you need to obtain an instance of `Syringe\Container`:
 ```php
@@ -46,7 +44,7 @@ You can also use a class name as a key (useful for constructor injection):
 $c->bindClass("\Support\LoggerInterface", \Monolog\Logger::class);
 ```
 
-### Binding singletons
+### Binding Shared Services
 If you wish the same instance of a class (for example, a database connection) to be returned whenever you access the service, you should use the `bindInstance` method:
 
 You may pass in the already instantiateD object:
