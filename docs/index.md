@@ -1,7 +1,7 @@
 # Syringe
 Syringe is a small dependency injection container for PHP.
 
-Dependency injection is a programming practice in which classes which depend on other classes or values automatically Have these dependencies passed to them instead of having to create them. These useful classes and values are often known as services and parameters respectively. For more on dependency injection, see here.
+Dependency injection is a programming practice in which classes which depend on other classes or values automatically Have these dependencies passed to them instead of having to create them. These useful classes and values are often known as services and parameters respectively. For more on dependency injection, see [here](https://code.tutsplus.com/tutorials/dependency-injection-in-php--net-28146).
 
 ## Getting a container instance
 To bind to the container, you need to obtain an instance of `Syringe\Container`:
