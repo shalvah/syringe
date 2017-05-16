@@ -9,7 +9,7 @@ composer require shalvah/syringe
 # Setup
 - Clone the repository
 ```bash
-git clone https://github.xom/shalvah/syringe
+git clone https://github.com/shalvah/syringe
 ```
 - Install dependencies
 ```bash
@@ -17,7 +17,8 @@ composer install
 ```
 - Run tests
 ```bash
-vendor/bin/phpunit tests
+./vendor/bin/phpunit tests 
+# on Windows: vendor\bin\phpunit tests 
 ```
 
 # Documentation

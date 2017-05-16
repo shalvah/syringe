@@ -92,18 +92,20 @@ class Container implements ContainerInterface
             if(is_array($result)) {
                 return $result;
             }
-            if (class_exists($result)) {
+            if (is_string($result) && class_exists($result)) {
                 return new $result();
             }
         } else if (isset(self::$instances[$key])) {
             if(is_callable($result = self::$instances[$key])) {
                 $result = call_user_func_array($result, [$this]);
                 self::$instances[$key] = $result;
+            } else if (is_string($result) && class_exists($result)) {
+                $result = new $result();
             }
         } else if (isset(self::$classes[$key])) {
             if (is_callable($result = self::$classes[$key])) {
                 $result = call_user_func_array($result, [$this]);
-            } else if (class_exists($result)) {
+            } else if (is_string($result) && class_exists($result)) {
                 $result = new $result();
             }
         } else {
