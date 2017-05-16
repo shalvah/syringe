@@ -1,4 +1,7 @@
 # Syringe
+
+[![Latest Stable Version](https://poser.pugx.org/shalvah/syringe/v/stable)](https://packagist.org/packages/shalvah/syringe) [![Total Downloads](https://poser.pugx.org/shalvah/syringe/downloads)](https://packagist.org/packages/shalvah/syringe) [![License](https://poser.pugx.org/shalvah/syringe/license)](https://packagist.org/packages/shalvah/syringe)
+
 Simple PSR-11 compliant PHP dependency injection container
 
 # Documentation
