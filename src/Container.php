@@ -15,17 +15,19 @@ class Container implements ContainerInterface
     /**
      * @var array
      */
+    protected static $instanceBindings;
+
+    /**
+     * @var array
+     */
+    protected static $valueBindings;
+
+    /**
+     * @var array
+     */
+    protected static $classBindings;
+
     protected static $instances;
-
-    /**
-     * @var array
-     */
-    protected static $values;
-
-    /**
-     * @var array
-     */
-    protected static $classes;
 
     /**
      * @var array
@@ -40,10 +42,12 @@ class Container implements ContainerInterface
      */
     public function bind(string $key, $value)
     {
-        if (is_callable($value)) {
-            $this->bindClass($key, $value);
-        } else if (is_object($value)) {
+        if (is_object($value)) {
             $this->bindInstance($key, $value);
+        } else if (is_callable($value)) {
+            $this->bindClass($key, $value);
+        } else if (is_string($value) && class_exists($value)) {
+            $this->bindClass($key, $value);
         } else {
             $this->bindValue($key, $value);
         }
@@ -57,7 +61,7 @@ class Container implements ContainerInterface
      */
     public function bindClass(string $key, $value)
     {
-        self::$classes[$key] = $value;
+        self::$classBindings[$key] = $value;
     }
 
     /**
@@ -68,7 +72,8 @@ class Container implements ContainerInterface
      */
     public function bindInstance(string $key, $object)
     {
-        self::$instances[$key] = $object;
+        self::$instanceBindings[$key] = $object;
+        unset(self::$instances[$key]);
     }
 
     /**
@@ -79,7 +84,7 @@ class Container implements ContainerInterface
      */
     public function bindValue(string $key, $value)
     {
-        self::$values[$key] = $value;
+        self::$valueBindings[$key] = $value;
     }
 
     /**
@@ -87,27 +92,30 @@ class Container implements ContainerInterface
      */
     public function get($key)
     {
-        if (isset(self::$values[$key])) {
-            $result = self::$values[$key];
-            if(is_array($result)) {
-                return $result;
+        if (isset(self::$valueBindings[$key])) {
+            $result = self::$valueBindings[$key];
+            if (is_callable($result)) {
+                $result = call_user_func_array($result(), [$this]);
             }
-            if (is_string($result) && class_exists($result)) {
-                return new $result();
-            }
-        } else if (isset(self::$instances[$key])) {
-            if(is_callable($result = self::$instances[$key])) {
+        } else if (isset(self::$instanceBindings[$key])) {
+            //check if already instantiated
+            if (isset(self::$instances[$key])) {
+                $result = self::$instances[$key];
+            } else if (is_callable($result = self::$instanceBindings[$key])) {
                 $result = call_user_func_array($result, [$this]);
                 self::$instances[$key] = $result;
             } else if (is_string($result) && class_exists($result)) {
+                // if object name
                 $result = new $result();
             }
-        } else if (isset(self::$classes[$key])) {
-            if (is_callable($result = self::$classes[$key])) {
+            //if object
+        } else if (isset(self::$classBindings[$key])) {
+            if (is_callable($result = self::$classBindings[$key])) {
                 $result = call_user_func_array($result, [$this]);
             } else if (is_string($result) && class_exists($result)) {
                 $result = new $result();
             }
+            // if primitive
         } else {
             throw new ContainerValueNotFoundException("You haven't bound anything for $key");
         }
@@ -126,7 +134,7 @@ class Container implements ContainerInterface
      */
     public function has($key)
     {
-        return isset(self::$values[$key]) || isset(self::$instances[$key]) || isset(self::$classes[$key]);
+        return isset(self::$valueBindings[$key]) || isset(self::$instanceBindings[$key]) || isset(self::$classBindings[$key]);
     }
 
     /**
@@ -155,12 +163,12 @@ class Container implements ContainerInterface
      */
     public function raw(string $key)
     {
-        if (isset(self::$values[$key])) {
-            $result = self::$values[$key];
-        } else if (isset(self::$instances[$key])) {
-            $result = self::$instances[$key];
-        } else if (isset(self::$classes[$key])) {
-            $result = self::$classes[$key];
+        if (isset(self::$valueBindings[$key])) {
+            $result = self::$valueBindings[$key];
+        } else if (isset(self::$instanceBindings[$key])) {
+            $result = self::$instanceBindings[$key];
+        } else if (isset(self::$classBindings[$key])) {
+            $result = self::$classBindings[$key];
         } else {
             throw new ContainerValueNotFoundException("You haven't bound anything for $key.");
         }
