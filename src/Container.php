@@ -27,6 +27,11 @@ class Container implements ContainerInterface
      */
     protected static $classBindings;
 
+    /**
+     * Shared services which have been instantiated by the container
+     *
+     * @var array
+     */
     protected static $instances;
 
     /**
