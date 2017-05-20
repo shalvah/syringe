@@ -9,6 +9,8 @@
 namespace Syringe;
 
 
+use Syringe\Exceptions\UnableToResolveException;
+
 class Resolver
 {
     /**

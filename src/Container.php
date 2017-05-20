@@ -3,6 +3,7 @@
 namespace Syringe;
 
 use Interop\Container\ContainerInterface;
+use Syringe\Exceptions\ContainerValueNotFoundException;
 
 /**
  * The dependency injction container

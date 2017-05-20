@@ -111,7 +111,7 @@ class ContainerTest extends PHPUnit_Framework_TestCase
 
     public function testGetShouldThrowExceptionIfBindingNotSet()
     {
-        $this->setExpectedException(\Syringe\ContainerValueNotFoundException::class, "You haven't bound anything for item7");
+        $this->setExpectedException(\Syringe\Exceptions\ContainerValueNotFoundException::class, "You haven't bound anything for item7");
         $this->c->get("item7");
     }
 
@@ -143,7 +143,7 @@ class ContainerTest extends PHPUnit_Framework_TestCase
 
     public function testRawThrowsExceptionIfBindingNotSet()
     {
-        $this->setExpectedException(\Syringe\ContainerValueNotFoundException::class, "You haven't bound anything for item7");
+        $this->setExpectedException(\Syringe\Exceptions\ContainerValueNotFoundException::class, "You haven't bound anything for item7");
         $this->c->raw("item7");
     }
 
