@@ -67,7 +67,7 @@ class Resolver
      *       Rather, it will pass in the specified value
      * @return \stdClass
      */
-    public function resolveClass(string $classname, array $constructorOverrideArgs = []) : \stdClass
+    public function resolveClass(string $classname, array $constructorOverrideArgs = [])
     {
         // if there is a binding for this class in the container, use that
         if ($this->cont->has($classname)){
