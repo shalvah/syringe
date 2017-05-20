@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>Class Syringe\Resolver</title>
+
+    <link rel="stylesheet" href="resources/style.css?c2f33731c1948fbed7c333554678bfa68d4817da">
+
+</head>
+
+<body>
+<div id="left">
+    <div id="menu">
+        <a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+        <div id="groups">
+            <h3>Namespaces</h3>
+            <ul>
+                <li class="active">
+                    <a href="namespace-Syringe.html">
+                        Syringe<span></span>
+                    </a>
+
+                    <ul>
+                        <li>
+                            <a href="namespace-Syringe.Exceptions.html">
+                                Exceptions </a>
+
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <hr>
+
+
+        <div id="elements">
+            <h3>Classes</h3>
+            <ul>
+                <li><a href="class-Syringe.Container.html">Container</a></li>
+                <li class="active"><a href="class-Syringe.Resolver.html">Resolver</a></li>
+            </ul>
+
+
+        </div>
+    </div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+    <div id="rightInner">
+        <form id="search">
+            <input type="hidden" name="cx" value="">
+            <input type="hidden" name="ie" value="UTF-8">
+            <input type="text" name="q" class="text" placeholder="Search">
+        </form>
+
+        <div id="navigation">
+            <ul>
+                <li>
+                    <a href="index.html" title="Overview"><span>Overview</span></a>
+                </li>
+                <li>
+                    <a href="namespace-Syringe.html" title="Summary of Syringe"><span>Namespace</span></a>
+                </li>
+                <li class="active">
+                    <span>Class</span></li>
+            </ul>
+            <ul>
+            </ul>
+            <ul>
+            </ul>
+        </div>
+
+        <div id="content" class="class">
+            <h1>Class Resolver</h1>
+
+
+            <div class="description">
+                <p>The Resolver. Used for constructor and method injection, and to resolve Container bindings.</p>
+
+                <p>The Resolver supports method/constructor injection using both PHPDocComments (the @Inject tag), and
+                    typehints on the parameters.
+                    The syntax for the @Inject tag is</p>
+
+                <pre>@Inject {bindingKey} {parameterName}</pre>
+
+                <p>.
+                    The Resolver first makes use of the doc, then resolves any dependencies not covered in the doc via
+                    the typehints.</p>
+
+                <p>Class Resolver</p>
+            </div>
+
+
+            <div class="info">
+
+
+                <b>Namespace:</b> <a href="namespace-Syringe.html">Syringe</a><br>
+                <b>Package:</b> Syringe<br>
+
+                <b>Located at</b> <a href="source-class-Syringe.Resolver.html#14-247" title="Go to source code">Resolver.php</a>
+                <br>
+            </div>
+
+
+            <table class="summary methods" id="methods">
+                <caption>Methods summary</caption>
+                <tr data-order="__construct" id="___construct">
+
+                    <td class="attributes"><code>
+                        public
+
+
+                    </code>
+                    </td>
+
+                    <td class="name">
+                        <div>
+                            <a class="anchor" href="#___construct">#</a>
+                            <code><a href="source-class-Syringe.Resolver.html#40-51" title="Go to source code">__construct</a>(
+                                <span>array <var>$config</var> = []</span> )</code>
+
+                            <div class="description short">
+                                <p>Creates a new Resolver.</p>
+                            </div>
+
+                            <div class="description detailed hidden">
+                                <p>Creates a new Resolver.</p>
+
+
+                                <h4>Parameters</h4>
+                                <div class="list">
+                                    <dl>
+                                        <dt><var>$config</var></dt>
+                                        <dd>Settings to be used when resolving</dd>
+                                    </dl>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr data-order="call" id="_call">
+
+                    <td class="attributes"><code>
+                        public
+
+                        mixed
+
+                    </code>
+                    </td>
+
+                    <td class="name">
+                        <div>
+                            <a class="anchor" href="#_call">#</a>
+                            <code><a href="source-class-Syringe.Resolver.html#53-69" title="Go to source code">call</a>(
+                                <span>Syringe\string <var>$classname</var></span>,
+                                <span>Syringe\string <var>$methodname</var></span>, <span>array <var>$overrideArgs</var> = []</span>
+                                )</code>
+
+                            <div class="description short">
+                                <p>Call a class method, automatically resolving its dependencies</p>
+                            </div>
+
+                            <div class="description detailed hidden">
+                                <p>Call a class method, automatically resolving its dependencies</p>
+
+
+                                <h4>Parameters</h4>
+                                <div class="list">
+                                    <dl>
+                                        <dt><var>$classname</var></dt>
+                                        <dd></dd>
+                                        <dt><var>$methodname</var></dt>
+                                        <dd></dd>
+                                        <dt><var>$overrideArgs</var></dt>
+                                        <dd><p>Associative array with parameter names as keys, and their desired values
+                                            as the values.
+                                            When calling</p>
+
+                                            <pre><span class="php-var">$methodname</span></pre>
+
+                                            <p>, the Resolver will not attempt tp resolve any parameter names you
+                                                specify here.
+                                                Rather, it will pass in the specified value</p></dd>
+                                    </dl>
+                                </div>
+
+                                <h4>Returns</h4>
+                                <div class="list">
+                                    mixed<br>The result of the method call
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr data-order="resolveClass" id="_resolveClass">
+
+                    <td class="attributes"><code>
+                        public
+
+                        stdClass
+
+                    </code>
+                    </td>
+
+                    <td class="name">
+                        <div>
+                            <a class="anchor" href="#_resolveClass">#</a>
+                            <code><a href="source-class-Syringe.Resolver.html#71-105" title="Go to source code">resolveClass</a>(
+                                <span>Syringe\string <var>$classname</var></span>, <span>array <var>$constructorOverrideArgs</var> = []</span>
+                                )</code>
+
+                            <div class="description short">
+                                <p>Resolve a class dependencies and instantiate it (constructor injection)</p>
+                            </div>
+
+                            <div class="description detailed hidden">
+                                <p>Resolve a class dependencies and instantiate it (constructor injection)</p>
+
+
+                                <h4>Parameters</h4>
+                                <div class="list">
+                                    <dl>
+                                        <dt><var>$classname</var></dt>
+                                        <dd></dd>
+                                        <dt><var>$constructorOverrideArgs</var></dt>
+                                        <dd><p>Associative array with parameter names as keys, and their desired values
+                                            as the values.
+                                            When calling the class constructor, the Resolver will not attempt tp resolve
+                                            any parameter names you specify here.
+                                            Rather, it will pass in the specified value</p></dd>
+                                    </dl>
+                                </div>
+
+                                <h4>Returns</h4>
+                                <div class="list">
+                                    stdClass
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr data-order="resolveMethod" id="_resolveMethod">
+
+                    <td class="attributes"><code>
+                        public
+
+                        mixed
+
+                    </code>
+                    </td>
+
+                    <td class="name">
+                        <div>
+                            <a class="anchor" href="#_resolveMethod">#</a>
+                            <code><a href="source-class-Syringe.Resolver.html#107-135" title="Go to source code">resolveMethod</a>(
+                                <span>StdClass <var>$instance</var></span>, <span>Syringe\string <var>$methodname</var></span>,
+                                <span>array <var>$methodOverrideArgs</var> = []</span> )</code>
+
+                            <div class="description short">
+                                <p>Call a method on a resolved class instance</p>
+                            </div>
+
+                            <div class="description detailed hidden">
+                                <p>Call a method on a resolved class instance</p>
+
+
+                                <h4>Parameters</h4>
+                                <div class="list">
+                                    <dl>
+                                        <dt><var>$instance</var></dt>
+                                        <dd>The class instance</dd>
+                                        <dt><var>$methodname</var></dt>
+                                        <dd></dd>
+                                        <dt><var>$methodOverrideArgs</var></dt>
+                                        <dd><p>Associative array with parameter names as keys, and their desired values
+                                            as the values.
+                                            When calling the class method, the Resolver will not attempt tp resolve any
+                                            parameter names you specify here.
+                                            Rather, it will pass in the specified value</p></dd>
+                                    </dl>
+                                </div>
+
+                                <h4>Returns</h4>
+                                <div class="list">
+                                    mixed
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+
+        </div>
+
+        <div id="footer">
+            API documentation generated by <a href="http://apigen.org">ApiGen</a>
+        </div>
+    </div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>
