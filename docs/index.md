@@ -136,3 +136,6 @@ $getTime = $c->raw("now.time");
 
 $getTime();
 ```
+
+# API Documentation
+View API documentation [here](http://shalvah.me/syringe/api)
