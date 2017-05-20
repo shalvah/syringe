@@ -49,6 +49,8 @@ class Container implements ContainerInterface
     {
         if (is_object($value)) {
             $this->bindInstance($key, $value);
+        } else if (interface_exists($key) || class_exists($key)) {
+            $this->bindClass($key, $value);
         } else if (is_callable($value)) {
             $this->bindClass($key, $value);
         } else if (is_string($value) && class_exists($value)) {
