@@ -6,7 +6,7 @@ use Interop\Container\ContainerInterface;
 use Syringe\Exceptions\ContainerValueNotFoundException;
 
 /**
- * The dependency injction container
+ * The Container. Used to hold, modify, and retrieve bindings of parameters and services.
  *
  * Class Container
  * @package Syringe

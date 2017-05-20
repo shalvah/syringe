@@ -11,6 +11,16 @@ namespace Syringe;
 
 use Syringe\Exceptions\UnableToResolveException;
 
+/**
+ * The Resolver. Used for constructor and method injection, and to resolve Container bindings.
+ *
+ * The Resolver supports method/constructor injection using both PHPDocComments (the @Inject tag), and typehints on the parameters.
+ * The syntax for the @Inject tag is <code>@Inject {bindingKey} {parameterName}</code>.
+ * The Resolver first makes use of the doc, then resolves any dependencies not covered in the doc via the typehints.
+ *
+ * Class Resolver
+ * @package Syringe
+ */
 class Resolver
 {
     /**
@@ -46,7 +56,7 @@ class Resolver
      * @param string $classname
      * @param string $methodname
      * @param array $overrideArgs Associative array with parameter names as keys, and their desired values as the values.
-     *       When calling $methodname, the Resolver will not attempt tp resolve any parameter names you specify here.
+     *       When calling <code>$methodname</code>, the Resolver will not attempt tp resolve any parameter names you specify here.
      *       Rather, it will pass in the specified value
      * @return mixed The result of the method call
      */
