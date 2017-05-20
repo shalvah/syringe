@@ -26,3 +26,6 @@ composer install
 ./vendor/bin/phpunit tests 
 # on Windows: vendor\bin\phpunit tests 
 ```
+
+# API Documentation
+View API documentation [here](http://shalvah.me/syringe/api)
